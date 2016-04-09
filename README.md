@@ -4,9 +4,15 @@
 
 This is a Chrome extension (and Opera add-on) which lets you easily insert temporary email addresses anywhere on the web. Perfect for registering when you don't really want to.
 
+## Usage
+
+Right-click any text field and choose a temporary email provider.
+
+![Screenshot](http://i.imgur.com/UACubRK.png)
+
 ## Installation
 
-Install it from Chrome Web Store or Opera add-ons (links coming later)
+Install it from [Chrome Web Store](https://chrome.google.com/webstore/detail/temporary-email/dpdilneogeopnmannkiopkignbbimbik) or Opera add-ons (soon available)
 
 ## Building
 
