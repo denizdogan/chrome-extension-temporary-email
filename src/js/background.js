@@ -44,22 +44,25 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     return
   }
 
+  // mapping request types to its handler
   const HANDLERS = {
+    // an email address was found by a provider
     'found': () => {
-      // tell the receiver to insert the email
+      // tell the receiver to deal with the email address
       chrome.tabs.sendMessage(receiverId, {
         type: 'insert',
         value: request.value
       })
-
-      // we are no longer waiting for anything from that tab
-      delete TABS[sender.tab.id]
     }
   }
 
+  // get the handler for the given request type
   let handler = HANDLERS[request.type]
   if (handler) {
     handler()
+
+    // we are no longer waiting for anything from that tab
+    delete TABS[sender.tab.id]
   } else {
     console.warn('Unknown request: %O from %O', request, sender)
   }
