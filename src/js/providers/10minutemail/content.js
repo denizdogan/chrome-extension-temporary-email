@@ -5,3 +5,16 @@ if (element) {
     value: element.value
   })
 }
+
+chrome.storage.sync.get('10minutemail--auto-renew', (response) => {
+  if (response['10minutemail--auto-renew'] === true) {
+    console.log('setting timeout')
+    setTimeout(() => {
+      let resetElem = document.querySelector('a[href$="resetSessionLife"]')
+      if (!resetElem) {
+        return
+      }
+      resetElem.click()
+    }, 120 * 1000)
+  }
+})
