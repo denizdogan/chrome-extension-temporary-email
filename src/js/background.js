@@ -1,3 +1,4 @@
+import { DEFAULT_SETTINGS } from './constants'
 import airmail from './providers/airmail/config'
 import guerrillamail from './providers/guerrillamail/config'
 import tempmail from './providers/tempmail/config'
@@ -64,11 +65,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   }
 })
 
-// the general extension settings
-const DEFAULTS = {
-  'provider-in-bg': true
-}
-
 // initialize settings
 chrome.storage.sync.get(null, (items) => {
   // add each provider's default options to DEFAULTS
@@ -83,9 +79,9 @@ chrome.storage.sync.get(null, (items) => {
 
   // map of settings that don't exist in storage to their default values
   let toUpdate = {}
-  for (let key in DEFAULTS) {
+  for (let key in DEFAULT_SETTINGS) {
     if (!items.hasOwnProperty(key)) {
-      toUpdate[key] = DEFAULTS[key]
+      toUpdate[key] = DEFAULT_SETTINGS[key]
     }
   }
 
