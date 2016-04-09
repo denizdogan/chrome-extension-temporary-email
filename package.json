@@ -44,5 +44,6 @@
   },
   "standard": {
     "globals": ["chrome"]
-  }
+  },
+  "private": true
 }
