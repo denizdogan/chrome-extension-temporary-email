@@ -16,6 +16,7 @@
     "scripts": ["js/background.js"],
     "persistent": true
   },
+  "options_page": "html/options.html",
   "content_scripts": [
     { "matches": ["<all_urls>"],
       "js": ["js/content.js"],
@@ -34,6 +35,7 @@
   "permissions": [
     "contextMenus",
     "tabs",
+    "storage",
     "*://10minutemail.com/",
     "*://getairmail.com/",
     "*://temp-mail.org/",

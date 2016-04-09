@@ -27,8 +27,8 @@ PROVIDERS.forEach((p) => {
         index: tab.index + 1,
         openerTabId: tab.id,
         active: false
-      }, (created) => {
-        TABS[created.id] = tab.id
+      }, (createdTab) => {
+        TABS[createdTab.id] = tab.id
       })
     }
   })
@@ -36,15 +36,15 @@ PROVIDERS.forEach((p) => {
 
 // listen for content script messages
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  // check who the message is for
+  let receiverId = TABS[sender.tab.id]
+  if (receiverId === undefined) {
+    // this can happen e.g. if the user F5's the provider tab
+    return
+  }
+
   const HANDLERS = {
     'found': () => {
-      // check if we expect this message
-      let receiverId = TABS[sender.tab.id]
-      if (receiverId === undefined) {
-        // this can happen e.g. if the user F5's the provider tab
-        return
-      }
-
       // tell the receiver to insert the email
       chrome.tabs.sendMessage(receiverId, {
         type: 'insert',
@@ -62,4 +62,33 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } else {
     console.warn('Unknown request: %O from %O', request, sender)
   }
+})
+
+// the general extension settings
+const DEFAULTS = {
+  'provider-in-bg': true
+}
+
+// initialize settings
+chrome.storage.sync.get(null, (items) => {
+  // add each provider's default options to DEFAULTS
+  PROVIDERS.forEach((p) => {
+    for (let key in p.options) {
+      let val = p.options
+      if (!items.hasOwnProperty(key)) {
+        toUpdate[key] = val
+      }
+    }
+  })
+
+  // map of settings that don't exist in storage to their default values
+  let toUpdate = {}
+  for (let key in DEFAULTS) {
+    if (!items.hasOwnProperty(key)) {
+      toUpdate[key] = DEFAULTS[key]
+    }
+  }
+
+  // update storage with any missing settings
+  chrome.storage.sync.set(toUpdate)
 })
