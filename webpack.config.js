@@ -5,9 +5,14 @@ var CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   context: path.join(__dirname, 'src'),
   entry: {
+    // basics
     'js/background.js': ['./js/background.js'],
     'js/content.js': ['./js/content.js'],
-    'js/options.js': ['./js/options.js'],
+
+    // options
+    'options/index.js': ['./options/index.js'],
+
+    // providers
     'js/providers/10minutemail.js': ['./js/providers/10minutemail/content.js'],
     'js/providers/airmail.js': ['./js/providers/airmail/content.js'],
     'js/providers/guerrillamail.js': ['./js/providers/guerrillamail/content.js'],
@@ -15,38 +20,60 @@ module.exports = {
     'js/providers/tempmail.js': ['./js/providers/tempmail/content.js']
   },
   module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel'
-    }, {
-      test: /\.css$/,
-      loader: 'style!css'
-    }, {
-      test: /\.less$/,
-      loader: 'style!css!less?noIeCompat'
-    }, {
-      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'url?limit=1000000&mimetype=application/font-woff'
-    }, {
-      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      loader: 'file'
-    }]
+    preLoaders: [
+      // riotjs tag files
+      {
+        test: /\.tag$/,
+        exclude: /node_modules/,
+        loader: 'tag'
+      }
+    ],
+
+    loaders: [
+      // ecmascript
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel'
+      },
+
+      // stylesheets
+      {
+        test: /\.css$/,
+        loader: 'style!css'
+      }, {
+        test: /\.scss$/,
+        loader: 'style!css!sass'
+      },
+
+      // fonts
+      {
+        test: /\.(woff2?|svg)$/,
+        loader: 'url?limit=10000'
+      }, {
+        test: /\.(ttf|eot)$/,
+        loader: 'file'
+      },
+
+      // bootstrap 3 w/ sass & jquery
+      {
+        test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
+        loader: 'imports?jQuery=jquery'
+      }]
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: './[name]'
   },
   plugins: [
-    new CopyWebpackPlugin([{
-      from: 'manifest.json'
-    }, {
-      from: 'img/icons/*'
-    }, {
-      from: 'html/*'
-    }]),
-    new CleanWebpackPlugin(['dist'], {
-      verbose: true
-    })
+    new CopyWebpackPlugin([
+      { from: 'manifest.json' },
+      { from: 'img/icons/*' },
+      { from: 'options/*.html' }
+    ]),
+    new CleanWebpackPlugin(
+      ['dist'],
+      { verbose: true }
+    )
   ]
 }

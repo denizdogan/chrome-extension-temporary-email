@@ -16,7 +16,7 @@
     "scripts": ["js/background.js"],
     "persistent": true
   },
-  "options_page": "html/options.html",
+  "options_page": "options/options.html",
   "content_scripts": [
     { "matches": ["<all_urls>"],
       "js": ["js/content.js"],
@@ -41,5 +41,6 @@
     "*://temp-mail.org/",
     "*://www.guerrillamail.com/",
     "*://www.throwawaymail.com/"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

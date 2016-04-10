@@ -3,7 +3,8 @@ export default {
   id: '10minutemail',
   example: 'c8494@trbvn.com',
   url: 'http://10minutemail.com/',
-  options: {
-    '10minutemail--auto-renew': true
-  }
+  options: [{
+    id: '10minutemail--auto-renew',
+    value: true
+  }]
 }

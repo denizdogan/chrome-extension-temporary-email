@@ -1,0 +1,13 @@
+@import 'bootstrap-sass/assets/stylesheets/bootstrap/mixins/_border-radius.scss';
+
+body {
+  font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
+  color: #333;
+  background: #eee;
+}
+
+app-section {
+  display: block;
+  background: blue;
+//  @include border-radius(10px);
+}
