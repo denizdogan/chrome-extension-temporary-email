@@ -10,10 +10,10 @@ module.exports = {
     'js/content.js': ['./js/content.js'],
 
     // options
-    'options/index.js': ['./options/index.js'],
+    'options/script.js': ['./options/script.js'],
 
     // providers
-    'js/providers/10minutemail.js': ['./js/providers/10minutemail/content.js'],
+    'js/providers/tenminutemail.js': ['./js/providers/tenminutemail/content.js'],
     'js/providers/airmail.js': ['./js/providers/airmail/content.js'],
     'js/providers/guerrillamail.js': ['./js/providers/guerrillamail/content.js'],
     'js/providers/throwawaymail.js': ['./js/providers/throwawaymail/content.js'],
@@ -44,21 +44,6 @@ module.exports = {
       }, {
         test: /\.scss$/,
         loader: 'style!css!sass'
-      },
-
-      // fonts
-      {
-        test: /\.(woff2?|svg)$/,
-        loader: 'url?limit=10000'
-      }, {
-        test: /\.(ttf|eot)$/,
-        loader: 'file'
-      },
-
-      // bootstrap 3 w/ sass & jquery
-      {
-        test: /bootstrap-sass[\/\\]assets[\/\\]javascripts[\/\\]/,
-        loader: 'imports?jQuery=jquery'
       }]
   },
   output: {

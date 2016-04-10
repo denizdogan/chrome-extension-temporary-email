@@ -1,0 +1,77 @@
+@import '~purecss';
+
+$primary: #ff5189;
+$secondary: #ffad55;
+$black: #333;
+$dark: #666;
+$bright: #aaa;
+$white: #fff;
+$bg-color: #eee;
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
+  color: $black;
+  background: darken($white, 10%);
+  padding: 30px;
+}
+
+app {
+  display: block;
+  width: 60em;
+  margin: 0 auto;
+
+  h1 {
+    margin: 0;
+    background: $primary;
+    border-radius: 3px 3px 0 0;
+    color: white;
+    text-shadow: 0 1px 1px black;
+    padding: 0.8em;
+  }
+}
+
+app-section {
+  display: block;
+  background: white;
+  padding: 1em;
+  border: 1px solid white;
+  border-bottom-color: $bright;
+  margin-bottom: 1em;
+
+  h2 {
+    color: $bright;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    height: 2em;
+    line-height: 2em;
+    padding-left: 2px;
+    margin-bottom: 1em;
+    font-size: 14px;
+    vertical-align: middle;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+app-number input {
+  line-height: 1.5em;
+  width: 3em;
+}

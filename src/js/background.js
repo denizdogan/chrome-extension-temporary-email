@@ -1,8 +1,7 @@
-import { DEFAULT_SETTINGS } from './constants'
 import airmail from './providers/airmail/config'
 import guerrillamail from './providers/guerrillamail/config'
 import tempmail from './providers/tempmail/config'
-import tenminutemail from './providers/10minutemail/config'
+import tenminutemail from './providers/tenminutemail/config'
 import throwawaymail from './providers/throwawaymail/config'
 
 // array of provider configurations
@@ -66,28 +65,4 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } else {
     console.warn('Unknown request: %O from %O', request, sender)
   }
-})
-
-// initialize settings
-chrome.storage.sync.get(null, (items) => {
-  // add each provider's default options to DEFAULTS
-  PROVIDERS.forEach((p) => {
-    for (let key in p.options) {
-      let val = p.options
-      if (!items.hasOwnProperty(key)) {
-        toUpdate[key] = val
-      }
-    }
-  })
-
-  // map of settings that don't exist in storage to their default values
-  let toUpdate = {}
-  for (let key in DEFAULT_SETTINGS) {
-    if (!items.hasOwnProperty(key)) {
-      toUpdate[key] = DEFAULT_SETTINGS[key]
-    }
-  }
-
-  // update storage with any missing settings
-  chrome.storage.sync.set(toUpdate)
 })
