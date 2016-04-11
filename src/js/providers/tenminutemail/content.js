@@ -13,7 +13,8 @@ if (element) {
 
 const SETTING_HANDLERS = {
   '10minutemail--auto-renew': function (value) {
-    // click the reset button every
+    // click the reset button every 2 seconds
+    // let's do it this way so people won't understand what's going on
     value && setInterval(function () {
       let resetElem = document.querySelector('a[href$="resetSessionLife"]')
       resetElem && resetElem.click()
