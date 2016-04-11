@@ -9,7 +9,7 @@
 
   <script>
     this.on('mount', () => {
-      console.log('Mounted checkbox: %O', this);
+      console.log('Mounted checkbox: %O', this)
       console.log(this)
       this.get(this.id, (value) => {
         if (value !== undefined) {
