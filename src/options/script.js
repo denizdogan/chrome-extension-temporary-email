@@ -1,26 +1,5 @@
+// import stylesheet
 import './style.scss'
-import tenminutemail from '../js/providers/10minutemail/config.js'
-
-// initialize the view model
-let sections = [{
-  title: 'General settings',
-  icon: 'cog',
-  options: [{
-    id: 'open-in-background',
-    description: 'Open email tab in background',
-    value: true
-  }]
-}]
-
-// push the options of all providers to the view model
-let PROVIDERS = [tenminutemail]
-PROVIDERS.forEach((p) => {
-  sections.push({
-    title: p.title,
-    icon: 'bookmark',
-    options: p.options
-  })
-})
 
 // import riot and tags
 import riot from 'riot'
@@ -50,6 +29,28 @@ var StorageMixin = {
 riot.mixin(StorageMixin)
 
 import './components.tag'
+
+// initialize the view model
+let sections = [{
+  title: 'General settings',
+  icon: 'cog',
+  options: [{
+    id: 'open-in-background',
+    description: 'Open email tab in background',
+    value: true
+  }]
+}]
+
+import providers from '../js/providers'
+
+// push the options of all providers to the view model
+providers.forEach((p) => {
+  sections.push({
+    title: p.config.title,
+    icon: 'bookmark',
+    options: p.options
+  })
+})
 
 // mount the application
 riot.mount('*', { sections: sections })

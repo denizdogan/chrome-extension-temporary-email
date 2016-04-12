@@ -22,7 +22,7 @@
       "js": ["js/content.js"],
       "all_frames": true },
     { "matches": ["*://10minutemail.com/*"],
-      "js": ["js/providers/10minutemail.js"] },
+      "js": ["js/providers/tenminutemail.js"] },
     { "matches": ["*://getairmail.com/*"],
       "js": ["js/providers/airmail.js"] }, 
     { "matches": ["*://www.guerrillamail.com/*"],

@@ -1,4 +1,4 @@
-import { DEFAULT_SETTINGS } from './constants'
+import config from './content.js'
 
 // get the input element holding the email
 let element = document.getElementById('addyForm:addressSelect')
@@ -23,7 +23,7 @@ const SETTING_HANDLERS = {
 }
 
 // get the settings and let its handler deal with it
-chrome.storage.sync.get(DEFAULT_SETTINGS, function (response) {
+chrome.storage.sync.get(config.DEFAULT_SETTINGS, function (response) {
   for (let key in response) {
     let value = response[key]
     let handler = SETTING_HANDLERS[key]

@@ -9,8 +9,6 @@
 
   <script>
     this.on('mount', () => {
-      console.log('Mounted checkbox: %O', this)
-      console.log(this)
       this.get(this.id, (value) => {
         if (value !== undefined) {
           this.checked = value
@@ -39,6 +37,7 @@
       this.get(this.id, (value) => {
         if (value !== undefined) {
           this.value = value
+          this.update()
         }
       })
     })
@@ -67,16 +66,25 @@
   </ul>
 </app-section>
 
-<save-button>
-  <button type="button" class="pure-button pure-button-disabled pure-button-primary">
-    Changes are automatically saved!
-  </button>
-</save-button>
+<app-header>
+  <header>
+    <h1>Options</h1>
+  </header>
+</app-header>
+
+<app-footer>
+  <footer>
+    <p>Copyright © 2016 Deniz Dogan</p>
+  </footer>
+</app-footer>
 
 <app>
-  <h1>Options</h1>
+  <app-header />
+  <app-section each="{ opts.sections }" if="{ options && options.length > 0 }" />
 
-  <app-section each="{ opts.sections }" />
+  <p>
+    Any changes you make are automatically saved. Don't look for a button.
+  </p>
 
-  <save-button />
+  <app-footer />
 </app>
