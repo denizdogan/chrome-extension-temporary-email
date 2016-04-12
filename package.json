@@ -36,6 +36,7 @@
     "imports-loader": "^0.6.5",
     "node-sass": "^3.4.2",
     "purecss": "^0.6.0",
+    "q": "^1.4.1",
     "riot": "^2.3.18",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",

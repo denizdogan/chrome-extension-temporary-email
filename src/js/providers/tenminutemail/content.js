@@ -1,4 +1,5 @@
 import config from './content.js'
+import Q from 'q'
 
 // get the input element holding the email
 let element = document.getElementById('addyForm:addressSelect')
@@ -11,14 +12,25 @@ if (element) {
   })
 }
 
+// used by the handlers of 'auto-renew-period' and 'auto-renew'
+// since auto-renew depends on the period setting
+let deferred = Q.defer()
+
+// map setting names to their handlers
 const SETTING_HANDLERS = {
-  '10minutemail--auto-renew': function (value) {
+  'tenminutemail--auto-renew-period': function (value) {
+    deferred.resolve(value)
+  },
+  'tenminutemail--auto-renew': function (value) {
     // click the reset button every 2 seconds
     // let's do it this way so people won't understand what's going on
-    value && setInterval(function () {
-      let resetElem = document.querySelector('a[href$="resetSessionLife"]')
-      resetElem && resetElem.click()
-    }, 2 * 1000)
+    deferred.promise.then((minutes) => {
+      let waitTime = minutes * 60 * 1000
+      value && setInterval(function () {
+        let resetElem = document.querySelector('a[href$="resetSessionLife"]')
+        resetElem && resetElem.click()
+      }, waitTime)
+    })
   }
 }
 
