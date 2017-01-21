@@ -1,6 +1,6 @@
 {
   "name": "chrome-extension-temporary-email",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Chrome extension which lets you quickly create a temporary email address",
   "scripts": {
     "compile": "webpack -v",

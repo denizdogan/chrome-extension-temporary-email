@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Temporary Email",
   "short_name": "TempEmail",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Quickly create a temporary email address",
   "author": "Deniz Dogan",
   "icons": {
