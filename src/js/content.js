@@ -1,19 +1,23 @@
 // the input element which the user opens the context menu on
 let targetElement = null
 
-// CSS selector for our targets
-const SELECTOR = `input[type="email"],
-                  input[type="password"],
-                  input[type="search"],
-                  input[type="text"],
-                  input[type="url"],
-                  textarea`
+document.addEventListener('contextmenu', (ev) => {
+  const nodeName = ev.target.nodeName
 
-// add context menu event listeners to all input elements
-Array.from(document.querySelectorAll(SELECTOR), (elem) => {
-  elem.addEventListener('contextmenu', () => {
-    targetElement = elem
-  })
+  // only act on <input> and <textarea> elements
+  if (!['INPUT', 'TEXTAREA'].includes(nodeName)) {
+    return
+  }
+
+  // if it's an <input> element, filter based on its type
+  if (nodeName === 'INPUT') {
+    const type = ev.target.type
+    if (!['email', 'password', 'search', 'text', 'url'].includes(type)) {
+      return
+    }
+  }
+
+  targetElement = ev.target
 })
 
 // listen for the "insert" request from the background script
