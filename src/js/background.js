@@ -1,5 +1,4 @@
 import providers from './providers'
-console.log(providers)
 
 // map sender tab IDs to receiver tab IDs
 const WAITING = {}
