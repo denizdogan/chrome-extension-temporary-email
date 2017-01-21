@@ -2,6 +2,13 @@ import path from 'path'
 
 import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
+import webpack from 'webpack'
+
+const pkg = require('./package.json');
+const banner = 'Temporary Email - ' + pkg.version + ' | ' +
+  '(c) 2016, ' + new Date().getFullYear() + '  ' + pkg.author + ' | ' +
+  pkg.license
+
 
 export default {
   context: path.join(__dirname, 'src'),
@@ -32,6 +39,8 @@ export default {
     ]
   },
   plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.BannerPlugin(banner),
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([
       { from: 'manifest.json' },
