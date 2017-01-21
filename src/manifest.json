@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "Temporary Email",
   "short_name": "TempEmail",
-  "version": "0.0.1",
-  "description": "Create and insert a temporary email address in input fields",
+  "version": "1.0.0",
+  "description": "Quickly create a temporary email address",
   "author": "Deniz Dogan",
   "icons": {
     "16": "img/icons/icon-16.png",

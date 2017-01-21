@@ -1,19 +1,12 @@
 {
   "name": "chrome-extension-temporary-email",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Chrome extension which lets you quickly create a temporary email address",
   "scripts": {
     "compile": "webpack -v",
     "watch": "webpack -vwd",
     "minify": "webpack -vp"
   },
-  "keywords": [
-    "email",
-    "browser",
-    "chrome",
-    "opera",
-    "extension"
-  ],
   "author": "Deniz Dogan <deniz@dogan.se>",
   "license": "MIT",
   "devDependencies": {
