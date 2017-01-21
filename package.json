@@ -4,7 +4,7 @@
   "description": "Chrome extension which lets you quickly create a temporary email address",
   "scripts": {
     "compile": "webpack -v",
-    "watch": "webpack -vw",
+    "watch": "webpack -vwd",
     "minify": "webpack -vp"
   },
   "keywords": [
