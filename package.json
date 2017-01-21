@@ -5,8 +5,7 @@
   "scripts": {
     "compile": "webpack -v",
     "watch": "webpack -vw",
-    "minify": "webpack -vp",
-    "lint": "standard src/**/*.js"
+    "minify": "webpack -vp"
   },
   "keywords": [
     "email",
