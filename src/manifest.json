@@ -26,6 +26,8 @@
       "js": ["js/providers/airmail.js"] }, 
     { "matches": ["*://www.guerrillamail.com/*"],
       "js": ["js/providers/guerrillamail.js"] },
+    { "matches": ["*://mailto.space/*"],
+      "js": ["js/providers/mailtospace.js"] },
     { "matches": ["*://temp-mail.org/*"],
       "js": ["js/providers/tempmail.js"] },
     { "matches": ["*://www.throwawaymail.com/*"],
@@ -37,6 +39,7 @@
     "storage",
     "*://10minutemail.com/",
     "*://*.getairmail.com/",
+    "*://mailto.space/",
     "*://temp-mail.org/",
     "*://www.guerrillamail.com/",
     "*://www.throwawaymail.com/"

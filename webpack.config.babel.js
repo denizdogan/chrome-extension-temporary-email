@@ -13,6 +13,7 @@ export default {
     // providers
     'js/providers/tenminutemail.js': ['./js/providers/tenminutemail/content.js'],
     'js/providers/airmail.js': ['./js/providers/airmail/content.js'],
+    'js/providers/mailtospace.js': ['./js/providers/mailtospace/content.js'],
     'js/providers/guerrillamail.js': ['./js/providers/guerrillamail/content.js'],
     'js/providers/throwawaymail.js': ['./js/providers/throwawaymail/content.js'],
     'js/providers/tempmail.js': ['./js/providers/tempmail/content.js']
