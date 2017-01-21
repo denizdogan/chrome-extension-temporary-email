@@ -3,7 +3,7 @@
   "name": "Temporary Email",
   "short_name": "TempEmail",
   "version": "0.0.1",
-  "description": "Lets you quickly create a temporary email address",
+  "description": "Create and insert a temporary email address in input fields",
   "author": "Deniz Dogan",
   "icons": {
     "16": "img/icons/icon-16.png",
@@ -16,14 +16,13 @@
     "scripts": ["js/background.js"],
     "persistent": true
   },
-  "options_page": "options/index.html",
   "content_scripts": [
     { "matches": ["<all_urls>"],
       "js": ["js/content.js"],
       "all_frames": true },
     { "matches": ["*://10minutemail.com/*"],
       "js": ["js/providers/tenminutemail.js"] },
-    { "matches": ["*://getairmail.com/*"],
+    { "matches": ["*://*.getairmail.com/*"],
       "js": ["js/providers/airmail.js"] }, 
     { "matches": ["*://www.guerrillamail.com/*"],
       "js": ["js/providers/guerrillamail.js"] },
@@ -37,7 +36,7 @@
     "tabs",
     "storage",
     "*://10minutemail.com/",
-    "*://getairmail.com/",
+    "*://*.getairmail.com/",
     "*://temp-mail.org/",
     "*://www.guerrillamail.com/",
     "*://www.throwawaymail.com/"

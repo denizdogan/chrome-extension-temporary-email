@@ -1,46 +1,8 @@
-import config from './content.js'
-import Q from 'q'
+let element = document.getElementById('mailAddress')
 
-// get the input element holding the email
-let element = document.getElementById('addyForm:addressSelect')
-
-// if found, tell the background script
 if (element) {
   chrome.runtime.sendMessage({
     type: 'found',
     value: element.value
   })
 }
-
-// used by the handlers of 'auto-renew-period' and 'auto-renew'
-// since auto-renew depends on the period setting
-let deferred = Q.defer()
-
-// map setting names to their handlers
-const SETTING_HANDLERS = {
-  'tenminutemail--auto-renew-period': function (value) {
-    deferred.resolve(value)
-  },
-  'tenminutemail--auto-renew': function (value) {
-    // click the reset button every 2 seconds
-    // let's do it this way so people won't understand what's going on
-    deferred.promise.then((minutes) => {
-      let waitTime = minutes * 60 * 1000
-      value && setInterval(function () {
-        let resetElem = document.querySelector('a[href$="resetSessionLife"]')
-        resetElem && resetElem.click()
-      }, waitTime)
-    })
-  }
-}
-
-// get the settings and let its handler deal with it
-chrome.storage.sync.get(config.DEFAULT_SETTINGS, function (response) {
-  for (let key in response) {
-    let value = response[key]
-    let handler = SETTING_HANDLERS[key]
-    if (handler) {
-      handler(value)
-    }
-  }
-})

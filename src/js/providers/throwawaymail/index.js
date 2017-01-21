@@ -1,9 +1,5 @@
-export const config = {
+export default {
   title: 'ThrowAwayMail',
   example: 'gatraclusa@thraml.com',
   url: 'http://www.throwawaymail.com/'
 }
-
-export const options = {}
-
-export default {config, options}

@@ -7,7 +7,7 @@ const WAITING = {}
 // add a context menu item for every provider
 providers.forEach((p) => {
   chrome.contextMenus.create({
-    title: `${p.config.title} (${p.config.example})`,
+    title: `${p.title} (${p.example})`,
     contexts: ['editable'],
     onclick: (info, tab) => {
       chrome.tabs.create({
