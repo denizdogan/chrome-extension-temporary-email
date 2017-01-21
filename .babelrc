@@ -1,4 +1,3 @@
 {
-  "presets": ["latest"],
-  "sourceMaps": true
+  "presets": ["latest"]
 }

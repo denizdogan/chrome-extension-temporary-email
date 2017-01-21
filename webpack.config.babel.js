@@ -37,6 +37,5 @@ export default {
       { from: 'manifest.json' },
       { from: 'img/icons/*' },
     ])
-  ],
-  devtool: 'source-map'
+  ]
 }
