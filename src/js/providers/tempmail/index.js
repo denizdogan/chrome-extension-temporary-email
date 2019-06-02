@@ -1,5 +1,5 @@
 export default {
-  title: 'TempMail',
-  example: 'fehig@leeching.net',
+  title: 'Temp-Mail.org',
+  example: 'gehij@planet-travel.club',
   url: 'https://temp-mail.org/'
 }
