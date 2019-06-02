@@ -8,7 +8,7 @@ Chrome extension for quickly creating temporary email addresses.
 
 Right-click any text field and choose one of the providers from the list.
 
-![Screenshot](http://i.imgur.com/NVfMTZR.png)
+![Screenshot](screenshot.png)
 
 ## Installation
 
