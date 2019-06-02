@@ -31,9 +31,6 @@ export default {
     'js/providers/guerrillamail.js': [
       './js/providers/guerrillamail/content.js'
     ],
-    'js/providers/throwawaymail.js': [
-      './js/providers/throwawaymail/content.js'
-    ],
     'js/providers/tempmail.js': ['./js/providers/tempmail/content.js']
   },
   output: {

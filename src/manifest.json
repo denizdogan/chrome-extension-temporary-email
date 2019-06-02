@@ -30,11 +30,7 @@
       "matches": ["*://www.guerrillamail.com/*"],
       "js": ["js/providers/guerrillamail.js"]
     },
-    { "matches": ["*://temp-mail.org/*"], "js": ["js/providers/tempmail.js"] },
-    {
-      "matches": ["*://www.throwawaymail.com/*"],
-      "js": ["js/providers/throwawaymail.js"]
-    }
+    { "matches": ["*://temp-mail.org/*"], "js": ["js/providers/tempmail.js"] }
   ],
   "permissions": [
     "contextMenus",
@@ -43,8 +39,7 @@
     "*://10minutemail.com/",
     "*://getdata.com/",
     "*://temp-mail.org/",
-    "*://www.guerrillamail.com/",
-    "*://www.throwawaymail.com/"
+    "*://www.guerrillamail.com/"
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
