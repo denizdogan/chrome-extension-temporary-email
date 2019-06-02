@@ -28,7 +28,6 @@ export default {
       './js/providers/tenminutemail/content.js'
     ],
     'js/providers/nada.js': ['./js/providers/nada/content.js'],
-    'js/providers/mailtospace.js': ['./js/providers/mailtospace/content.js'],
     'js/providers/guerrillamail.js': [
       './js/providers/guerrillamail/content.js'
     ],
