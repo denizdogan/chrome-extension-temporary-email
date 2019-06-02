@@ -12,5 +12,5 @@ if (element) {
         value: element.value
       })
     }
-  }, 100);
+  }, 100)
 }

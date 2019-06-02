@@ -4,11 +4,17 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import webpack from 'webpack'
 
-const pkg = require('./package.json');
-const banner = 'Temporary Email - ' + pkg.version + ' | ' +
-  '(c) 2016, ' + new Date().getFullYear() + '  ' + pkg.author + ' | ' +
+const pkg = require('./package.json')
+const banner =
+  'Temporary Email - ' +
+  pkg.version +
+  ' | ' +
+  '(c) 2016, ' +
+  new Date().getFullYear() +
+  '  ' +
+  pkg.author +
+  ' | ' +
   pkg.license
-
 
 export default {
   context: path.join(__dirname, 'src'),
@@ -18,11 +24,17 @@ export default {
     'js/content.js': ['./js/content.js'],
 
     // providers
-    'js/providers/tenminutemail.js': ['./js/providers/tenminutemail/content.js'],
+    'js/providers/tenminutemail.js': [
+      './js/providers/tenminutemail/content.js'
+    ],
     'js/providers/airmail.js': ['./js/providers/airmail/content.js'],
     'js/providers/mailtospace.js': ['./js/providers/mailtospace/content.js'],
-    'js/providers/guerrillamail.js': ['./js/providers/guerrillamail/content.js'],
-    'js/providers/throwawaymail.js': ['./js/providers/throwawaymail/content.js'],
+    'js/providers/guerrillamail.js': [
+      './js/providers/guerrillamail/content.js'
+    ],
+    'js/providers/throwawaymail.js': [
+      './js/providers/throwawaymail/content.js'
+    ],
     'js/providers/tempmail.js': ['./js/providers/tempmail/content.js']
   },
   output: {
@@ -30,21 +42,25 @@ export default {
     filename: './[name]'
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel'
+        test: /\.js/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
       }
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
     new webpack.BannerPlugin(banner),
     new CleanWebpackPlugin(['dist']),
-    new CopyWebpackPlugin([
-      { from: 'manifest.json' },
-      { from: 'img/icons/*' },
-    ])
-  ]
+    new CopyWebpackPlugin([{ from: 'manifest.json' }, { from: 'img/icons/*' }])
+  ],
+  optimization: {
+    minimize: true
+  },
+  devtool: 'source-map'
 }

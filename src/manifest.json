@@ -17,21 +17,28 @@
     "persistent": true
   },
   "content_scripts": [
-    { "matches": ["<all_urls>"],
-      "js": ["js/content.js"],
-      "all_frames": true },
-    { "matches": ["*://10minutemail.com/*"],
-      "js": ["js/providers/tenminutemail.js"] },
-    { "matches": ["*://*.getairmail.com/*"],
-      "js": ["js/providers/airmail.js"] }, 
-    { "matches": ["*://www.guerrillamail.com/*"],
-      "js": ["js/providers/guerrillamail.js"] },
-    { "matches": ["*://mailto.space/*"],
-      "js": ["js/providers/mailtospace.js"] },
-    { "matches": ["*://temp-mail.org/*"],
-      "js": ["js/providers/tempmail.js"] },
-    { "matches": ["*://www.throwawaymail.com/*"],
-      "js": ["js/providers/throwawaymail.js"] }
+    { "matches": ["<all_urls>"], "js": ["js/content.js"], "all_frames": true },
+    {
+      "matches": ["*://10minutemail.com/*"],
+      "js": ["js/providers/tenminutemail.js"]
+    },
+    {
+      "matches": ["*://*.getairmail.com/*"],
+      "js": ["js/providers/airmail.js"]
+    },
+    {
+      "matches": ["*://www.guerrillamail.com/*"],
+      "js": ["js/providers/guerrillamail.js"]
+    },
+    {
+      "matches": ["*://mailto.space/*"],
+      "js": ["js/providers/mailtospace.js"]
+    },
+    { "matches": ["*://temp-mail.org/*"], "js": ["js/providers/tempmail.js"] },
+    {
+      "matches": ["*://www.throwawaymail.com/*"],
+      "js": ["js/providers/throwawaymail.js"]
+    }
   ],
   "permissions": [
     "contextMenus",

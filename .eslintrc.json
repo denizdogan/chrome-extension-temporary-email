@@ -1,10 +1,7 @@
 {
-    "extends": "standard",
-    "plugins": [
-        "standard",
-        "promise"
-    ],
-    "env": {
-        "webextensions": true
-    }
+  "extends": "standard",
+  "plugins": ["standard", "promise"],
+  "env": {
+    "webextensions": true
+  }
 }

@@ -4,26 +4,28 @@ import providers from './providers'
 const WAITING = {}
 
 // add a context menu item for every provider
-providers.forEach((p) => {
+providers.forEach(p => {
   chrome.contextMenus.create({
     title: `${p.title} (${p.example})`,
     contexts: ['editable'],
     onclick: (info, tab) => {
-      chrome.tabs.create({
-        url: p.url,
-        index: tab.index + 1,
-        openerTabId: tab.id,
-        active: false
-      }, (createdTab) => {
-        WAITING[createdTab.id] = tab.id
-      })
+      chrome.tabs.create(
+        {
+          url: p.url,
+          index: tab.index + 1,
+          openerTabId: tab.id,
+          active: false
+        },
+        createdTab => {
+          WAITING[createdTab.id] = tab.id
+        }
+      )
     }
   })
 })
 
 // routing between content scripts and context menu items
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-
   // check who the request is for
   let receiverId = WAITING[sender.tab.id]
   if (receiverId === undefined) {
@@ -34,7 +36,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   // mapping request types to its handler
   const HANDLERS = {
     // an email address was found by a provider
-    'found': () => {
+    found: () => {
       // tell the receiver to deal with the email address
       chrome.tabs.sendMessage(receiverId, {
         type: 'insert',

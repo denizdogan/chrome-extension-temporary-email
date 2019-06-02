@@ -1,7 +1,7 @@
 // the input element which the user opens the context menu on
 let targetElement = null
 
-document.addEventListener('contextmenu', (ev) => {
+document.addEventListener('contextmenu', ev => {
   const nodeName = ev.target.nodeName
 
   // only act on <input> and <textarea> elements
